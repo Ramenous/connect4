@@ -28,25 +28,17 @@ initializeBoard=function(){
         var cell=row.insertCell(j);
         cell.className=COL+DELIM+j;
         cell.id=i+DELIM+j;
-        console.log(cell.id);
         rowArray.push(new Slot(cell.id));
     }
-    console.log(rowArray);
     boardArray.push(rowArray);
-    console.log(boardArray);
   }
   var spots=document.getElementById("gameBoard").getElementsByTagName("td");
-  console.log(spots);
-  console.log(spots[2]);
   for(var i=0; i<spots.length; i++){
     spots[i].onclick=function(){
       var position=(this.id).split(DELIM);
-      console.log(position);
       var col=parseInt(position[1]);
       var row=getNearestVacantSpot(col);
-      console.log("rowwie:"+row);
       boardArray[row][col].player=playerTurn;
-      console.log(boardArray[row][col].player);
       document.getElementById(row+DELIM+col).style.backgroundColor=(playerTurn) ? P1COLOR : P2COLOR;
       if(negativeDiagonalWin(playerTurn,row,col)||positiveDiagonalWin(playerTurn,row,col) || verticalWin(playerTurn,row,col) || horizontalWin(playerTurn,row,col)){
         alert((playerTurn)?"player1 won":"player2 won");
@@ -61,8 +53,6 @@ initializeBoard=function(){
 
 function getNearestVacantSpot(col){
   for(var i=0; i<VERTICAL_SLOTS; i++){
-    console.log("row:"+i, "col:"+col);
-    console.log(boardArray[i][col].player);
     if(boardArray[i][col].player!=null){
       return i-1;
     }
