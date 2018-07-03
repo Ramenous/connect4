@@ -1,0 +1,12 @@
+td{
+  width:70px;
+  height:70px;
+  border:2px solid black;
+  border-radius: 45px;
+}
+#gameBoard{
+  background-color: "yellow";
+  width:490px;
+  height:420px;
+  border: 2px solid black;
+}
